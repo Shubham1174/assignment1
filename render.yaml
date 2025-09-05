@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: assignment-app
+    env: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm run build:frontend
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: COOKIE_SECURE
+        value: true
+      - key: COOKIE_SAMESITE
+        value: none
+      # Fill these via dashboard or render.yaml sync secrets
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+

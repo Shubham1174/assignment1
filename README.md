@@ -1,5 +1,8 @@
 ﻿# Product Catalog App (Node + Express + MongoDB + React)
-
+Deployment (single host)
+1) Build frontend: from `backend` run `npm run build:frontend`.
+2) Set environment variables for backend: `MONGODB_URI`, `JWT_SECRET`, `CORS_ORIGIN`, `COOKIE_SECURE=true`, `COOKIE_SAMESITE=none`.
+3) Start backend: `npm start`. Backend serves `frontend/dist` and `/api` routes.
 A simple full-stack product catalog with authentication, role-based access control, product CRUD, cart, and orders.
 
 ## Features

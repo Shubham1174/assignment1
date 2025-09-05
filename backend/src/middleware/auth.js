@@ -25,11 +25,15 @@ export function requireRole(...roles) {
 
 export function setAuthCookie(res, token) {
   const isProd = process.env.NODE_ENV === 'production';
-  const cookieSecure = String(process.env.COOKIE_SECURE || 'false') === 'true';
+  const cookieSecure = String(process.env.COOKIE_SECURE || (isProd ? 'true' : 'false')) === 'true';
+  const sameSite = process.env.COOKIE_SAMESITE || (isProd ? 'none' : 'lax');
+  const domain = process.env.COOKIE_DOMAIN || undefined;
   res.cookie('token', token, {
     httpOnly: true,
-    secure: isProd ? true : cookieSecure,
-    sameSite: isProd ? 'strict' : 'lax',
+    secure: cookieSecure,
+    sameSite,
+    domain,
+    path: '/',
     maxAge: 7 * 24 * 60 * 60 * 1000
   });
 }

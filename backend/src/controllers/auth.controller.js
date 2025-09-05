@@ -45,7 +45,11 @@ export async function me(req, res) {
 }
 
 export async function logout(req, res) {
-  res.clearCookie('token');
+  const isProd = process.env.NODE_ENV === 'production';
+  const cookieSecure = String(process.env.COOKIE_SECURE || (isProd ? 'true' : 'false')) === 'true';
+  const sameSite = process.env.COOKIE_SAMESITE || (isProd ? 'none' : 'lax');
+  const domain = process.env.COOKIE_DOMAIN || undefined;
+  res.clearCookie('token', { httpOnly: true, secure: cookieSecure, sameSite, domain, path: '/' });
   res.json({ message: 'Logged out' });
 }
 
