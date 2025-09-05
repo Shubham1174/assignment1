@@ -8,7 +8,8 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "build:frontend": "cd ../frontend && npm install && npm run build",
-    "install:all": "npm install && cd ../frontend && npm install"
+    "install:all": "npm install && cd ../frontend && npm install",
+    "postinstall": "echo 'Backend dependencies installed'"
   },
   "keywords": [],
   "author": "",
