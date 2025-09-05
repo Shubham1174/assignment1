@@ -1,0 +1,16 @@
+{
+  "name": "assignment-app",
+  "version": "1.0.0",
+  "description": "Full-stack product catalog app",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "cd backend && npm run build:frontend",
+    "start": "cd backend && npm start",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
